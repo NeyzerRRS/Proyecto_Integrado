@@ -11,13 +11,13 @@ $sql .= "FROM usuarios AS u ";
 $sql .= "INNER JOIN ventas AS v ON u.id_usuario = v.id_usuario ";
 $sql .= "INNER JOIN detalle_venta AS dv ON v.id_venta = dv.id_venta ";
 $sql .= "INNER JOIN producto AS p ON dv.id_producto = p.id_producto ";
-$sql .= "WHERE v.fecha ='$fecha_inicio'";
+$sql .= "WHERE v.status = 1 AND dv.status = 1";
 
-if (!empty($fecha_fin)) {
-    $sql .= " AND v.fecha <= '$fecha_fin'";
+if (!empty($fecha_inicio) && empty($fecha_fin)) {
+    $sql .= " AND v.fecha = '$fecha_inicio'";
 }
-if (!empty($usuario)) {
-    $sql .= " AND v.id_usuario = '$usuario'";
+if (!empty($fecha_inicio) && !empty($fecha_fin)) {
+    $sql .= " AND v.fecha BETWEEN '$fecha_inicio' AND '$fecha_fin'";
 }
 
 $sql .= " GROUP BY v.id_venta ORDER BY v.fecha ASC";
