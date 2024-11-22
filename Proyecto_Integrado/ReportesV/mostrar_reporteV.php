@@ -19,6 +19,9 @@ if (!empty($fecha_inicio) && empty($fecha_fin)) {
 if (!empty($fecha_inicio) && !empty($fecha_fin)) {
     $sql .= " AND v.fecha BETWEEN '$fecha_inicio' AND '$fecha_fin'";
 }
+if (!empty($usuario)) {
+    $sql .= " AND usuario_id = '$usuario'";
+}
 
 $sql .= " GROUP BY v.id_venta ORDER BY v.fecha ASC";
 $resultado = mysqli_query($conexion, $sql);
