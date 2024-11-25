@@ -1,5 +1,5 @@
 <?php
-	include "../conexionesBD.php";
+	include_once "../conexionesBD.php";
 	$conexion = conectarBD();
 	
 	if(!$conexion)
@@ -47,3 +47,6 @@
 	</button>
 </body>
 </html>
+<?php
+mysqli_close($conexion);
+?>

@@ -1,5 +1,5 @@
 <?php
-include "../conexionesBD.php";
+include_once "../conexionesBD.php";
 $conexion = conectarBD();
 
 if (isset($_GET['id'])) {
