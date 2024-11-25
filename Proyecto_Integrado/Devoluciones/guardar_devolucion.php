@@ -1,4 +1,4 @@
-<?<?php
+<?php
     include "../conexionesBD.php";
     $conexion = conectarBD();
 
@@ -23,6 +23,11 @@
         $resultado = mysqli_query($conexion, $sql);
         if (!$resultado) {
             throw new Exception("Error al guardar la información de la devolución: " . mysqli_error($conexion));
+        }
+// Verificar stock disponible
+    $consultaStock = mysqli_query($conexion, "SELECT existencia FROM producto WHERE id_producto = '$nomPcto'");
+        if ($producto['existencia'] < $cantidadPcto) {
+            die("Error: No hay suficiente stock disponible para realizar la devolución.");
         }
 
         // Si la inserción fue exitosa, actualizar la existencia del producto
@@ -70,4 +75,5 @@
     // Cerrar la conexión con la base de datos
     mysqli_close($conexion);
 ?>
+
 
