@@ -1,5 +1,5 @@
 <?php
-include "../conexionesBD.php";
+include_once "../conexionesBD.php";
 $conexion = conectarBD();
 
 // Obtener el ID del producto desde el parámetro GET
