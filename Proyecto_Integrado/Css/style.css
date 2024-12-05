@@ -255,8 +255,8 @@ body{
 }
 .Contenedor{
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: repeat(2,auto);
+    grid-template-columns: repeat(3,2fr);
+    grid-template-rows: repeat(3,auto);
     justify-content: center;
     margin-left: 150px;
     margin-right: 150px;
